@@ -1,6 +1,7 @@
 import sys
 import random
 import urllib.request
+import cowsay
 
 def bullscows(guess, secret):
     bulls = 0
@@ -25,14 +26,16 @@ def gameplay(ask, inform, words):
 
 
 def inform(format_string, bulls, cows):
-    print(format_string.format(bulls, cows))
+    print(cowsay.cowsay(format_string.format(bulls, cows), cow = random.choice([*cowsay.list_cows()])))
 
 
 def ask(prompt, valid = None):
-    guess = input(prompt)
+    print(cowsay.cowsay(prompt, cow = random.choice([*cowsay.list_cows()])))
+    guess = input()
     if valid != None:
         while guess not in valid:
-            guess = input(prompt)
+            print(cowsay.cowsay(prompt, cow = random.choice([*cowsay.list_cows()])))
+            guess = input()
     return guess
 
 if __name__ == "__main__":
@@ -56,5 +59,5 @@ if __name__ == "__main__":
         sys.exit(1)
 
     dictionary = [word for word in dictionary if len(word) == length]
-    print(dictionary)
+#    print(dictionary)
     print("Попыток: ",gameplay(ask, inform, dictionary))
