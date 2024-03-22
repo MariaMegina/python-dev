@@ -56,5 +56,5 @@ if __name__ == "__main__":
         sys.exit(1)
 
     dictionary = [word for word in dictionary if len(word) == length]
-    print(dictionary)
+#    print(dictionary)
     print("Попыток: ",gameplay(ask, inform, dictionary))
